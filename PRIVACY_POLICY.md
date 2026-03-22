@@ -81,11 +81,9 @@ This Privacy Policy may be updated from time to time. Material changes will be r
 
 For privacy questions, contact:
 
-- Name: [Your Name or Company]
-- Email: [Your support/privacy email]
-- Address (optional): [Business address]
+- Name: Dr. Wai Min Kyaw
+- Email: waiminkyaw@gmail.com
+- Address (optional): Nant Mun
 
 ---
-
-If you publish SalePOS on an app store, replace the contact placeholders above with your real contact details before publishing.
 
