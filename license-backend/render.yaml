@@ -1,0 +1,21 @@
+services:
+  - type: web
+    name: salepos-license-backend
+    runtime: docker
+    plan: free
+    autoDeploy: true
+    healthCheckPath: /health
+    envVars:
+      - key: PORT
+        value: 10000
+      - key: TRIAL_DAYS
+        value: 5
+      - key: MAX_DEVICES
+        value: 5
+      - key: ENFORCE_FIREBASE_TOKEN
+        value: true
+      - key: FIREBASE_PROJECT_ID
+        sync: false
+      - key: FIREBASE_SERVICE_ACCOUNT_JSON
+        sync: false
+
