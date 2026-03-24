@@ -86,11 +86,3 @@ Stop using the app at any time.
 12) Changes to This Policy
 This policy may be updated from time to time. Material changes will be reflected by updating the effective date.
 13) Contact
-For privacy questions, contact:
-
-- Name: Dr. Wai Min Kyaw
-- Email: waiminkyaw@gmail.com
-- Address (optional): Nant Mun
-
----
-
