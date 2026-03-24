@@ -1,84 +1,91 @@
-# Privacy Policy for SalePOS
-
-Effective date: March 23, 2026
-
-SalePOS ("the App") is a point-of-sale application. This Privacy Policy explains what information the App processes, how it is used, and your choices.
-
-## 1) Information We Process
-
-The App processes data that you enter while using SalePOS, including:
-
-- Product information (for example: product name, category, price, stock).
-- Sales transaction records.
-- Basic device label used to identify a device during local synchronization.
-
-The App does **not** require account registration and does not request personal profile data by default.
-
-## 2) How Information Is Used
-
-Your data is used only to provide core app functionality, including:
-
-- Managing your product catalog and stock.
-- Recording and viewing sales.
-- Syncing business data between your own devices on a local network (if you use sync features).
-
-## 3) Data Storage
-
-- Data is stored locally on your device.
-- SalePOS does not upload your data to a developer-operated cloud service by default.
-
-## 4) Local Network Sync
-
-If you enable local sync/hosting features, the App exchanges snapshot data between devices on your local network.
-
-- This transmission is intended for trusted local networks.
-- Local sync traffic may not be end-to-end encrypted.
-
-You are responsible for using secure, trusted network environments.
-
-## 5) Permissions
-
-SalePOS may use network-related permissions to support local connectivity and sync, such as:
-
-- Internet/network access.
-- Wi-Fi/network state access.
-- Local network service discovery (multicast-related access).
-
-The App uses these permissions only for app features described in this policy.
-
-## 6) Third-Party Services
-
-The App may use third-party libraries to provide technical features (for example, barcode scanning or local networking).
-
-SalePOS is not designed to send your business data to third-party analytics or advertising services by default.
-
-## 7) Data Retention and Deletion
-
-- Data remains on your device until you delete it in the app or uninstall the app.
-- Uninstalling the app removes locally stored app data according to your device/OS behavior.
-
-## 8) Children
-
+Privacy Policy for SalePOS
+Effective date: March 24, 2026
+SalePOS ("the App") is a point-of-sale application. This Privacy Policy explains what data is processed, how it is used, and your choices.
+1) Information We Process
+Depending on the features you use, SalePOS may process:
+•
+Business data you enter: product name, category, cost, price, stock, and sales records.
+•
+Account data: email address and authentication identifier (for example, Firebase user ID) when you sign in.
+•
+License/trial data: trial start/end timestamps, entitlement status, purchase status, and plan/device limit state.
+•
+Device/license technical data: app install/device identifier and device label used for license/device registration.
+•
+Network data: local host addresses and ports used during LAN sync.
+2) How Information Is Used
+SalePOS uses this information to:
+•
+Provide POS features (catalog, cart, checkout, receipts, and reporting).
+•
+Sync data between your devices on local trusted networks.
+•
+Enforce trial and paid entitlement rules, including device limits.
+•
+Prevent misuse of trial/purchase access (including reinstall bypass checks).
+•
+Support troubleshooting and account/license support requests.
+3) Data Storage and Processing Locations
+•
+Core POS business data is stored locally on your device by default.
+•
+Account and entitlement-related data may be processed by backend services to validate login, trial, and purchase access.
+•
+License data may be stored on the developer-managed backend to keep entitlement consistent across reinstalls/devices.
+4) Local Network Sync
+If you enable host/sync features, SalePOS exchanges snapshot data over your local network.
+•
+Use only trusted, secure networks.
+•
+Local network traffic may not be end-to-end encrypted.
+5) Permissions
+SalePOS may request network-related permissions, including:
+•
+Internet access.
+•
+Network/Wi-Fi state access.
+•
+Local network service discovery (multicast-related access).
+These permissions are used to enable app networking, sync, and entitlement checks.
+6) Third-Party Services
+SalePOS may rely on third-party providers to run key features. Examples include:
+•
+Firebase Authentication (account sign-in and token-based identity).
+•
+Hosting/backend infrastructure (for entitlement/trial APIs).
+•
+Technical libraries for barcode scanning, QR generation, and networking.
+SalePOS is not designed to run third-party ad tracking by default.
+7) Trial, Purchase, and Device Limit Enforcement
+To provide a fair trial and paid access model:
+•
+Trial duration and entitlement status are validated by backend services.
+•
+Reinstalling the app does not automatically reset server-side trial state.
+•
+Device usage limits may be enforced per account based on active registered devices.
+8) Data Retention and Deletion
+•
+Local POS data remains on your device until you delete it or uninstall the app.
+•
+Account/license records may be retained while your account is active and as needed for entitlement, fraud prevention, and legal compliance.
+•
+You may request account/license data deletion by contacting support (subject to legal/financial retention obligations).
+9) Security
+We take reasonable technical and organizational measures to protect data, but no system is completely secure. Keep your device protected and use trusted networks.
+10) Children
 SalePOS is a business tool and is not directed to children under 13.
-
-## 9) Security
-
-We take reasonable steps to reduce risk, but no mobile app or network transmission is perfectly secure. Use device security features and trusted networks when handling sensitive business information.
-
-## 10) Your Choices
-
+11) Your Choices
 You can:
-
-- Choose whether to use local sync.
-- Control what business data you enter.
-- Stop using the app at any time.
-
-## 11) Changes to This Policy
-
-This Privacy Policy may be updated from time to time. Material changes will be reflected by updating the effective date.
-
-## 12) Contact
-
+•
+Choose whether to use local sync features.
+•
+Choose whether to create an account and use licensed features.
+•
+Stop using the app at any time.
+12) Changes to This Policy
+This policy may be updated from time to time. Material changes will be reflected by updating the effective date.
+13) Contact
 For privacy questions, contact:
 
 - Name: Dr. Wai Min Kyaw
