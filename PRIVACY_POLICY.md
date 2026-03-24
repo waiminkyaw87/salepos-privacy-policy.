@@ -95,11 +95,9 @@ This policy may be updated from time to time. Material changes will be reflected
 
 For privacy questions or data requests, contact:
 
-- Name: [Your Name or Company]
-- Email: [Your support/privacy email]
-- Address (optional): [Business address]
+- Name: Dr. Wai Min Kyaw
+- Email: waiminkyaw@gmail.com
+- Address (optional): Nant Mun, Mohnyin, Myanmar
 
 ---
-
-Before publishing on Google Play, replace all placeholders above with real contact details.
 
