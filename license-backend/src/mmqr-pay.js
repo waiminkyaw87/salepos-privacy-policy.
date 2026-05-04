@@ -27,11 +27,23 @@ function getClient() {
   }
 
   const { MMPaySDK } = require("mmpay-node-sdk");
+
+  // Normalize API Base URL: Remove trailing slash and ensure /v1 suffix
+  let baseUrl = normalize(config.mmqrApiBaseUrl);
+  if (baseUrl) {
+    baseUrl = baseUrl.replace(/\/+$/, ""); // Remove trailing slashes
+    if (!baseUrl.endsWith("/v1")) {
+      baseUrl += "/v1";
+    }
+  }
+
+  console.log(`[MMQR] Initializing SDK with Base URL: ${baseUrl || "default"}`);
+
   cachedClient = new MMPaySDK({
     appId: config.mmqrAppId,
     publishableKey: config.mmqrPublishableKey,
     secretKey: config.mmqrSecretKey,
-    apiBaseUrl: normalize(config.mmqrApiBaseUrl) || undefined
+    apiBaseUrl: baseUrl || undefined
   });
   return cachedClient;
 }
@@ -53,8 +65,16 @@ async function createMmqrPayment({ orderId, amount, callbackUrl, customMessage, 
   try {
     let response;
     // Use .pay() for both sandbox and production as it's more stable.
-    // The environment is determined by your API keys (pk_test vs pk_live).
     response = await client.pay(payload);
+
+    // Some SDK versions return an error object instead of throwing
+    if (response?.error || response?.statusCode >= 400) {
+      console.error(`[MMQR] API returned error:`, JSON.stringify(response, null, 2));
+      return {
+        status: response.statusCode || "ERROR",
+        message: response.message || "MMQR Gateway Error"
+      };
+    }
 
     console.log(`[MMQR] API Success: orderId=${payload.orderId}`);
     console.log(`[MMQR] API Response Body:`, JSON.stringify(response, null, 2));
