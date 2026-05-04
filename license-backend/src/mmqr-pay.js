@@ -28,14 +28,9 @@ function getClient() {
 
   const { MMPaySDK } = require("mmpay-node-sdk");
 
-  // Normalize API Base URL: Remove trailing slash and ensure /v1 suffix
-  let baseUrl = normalize(config.mmqrApiBaseUrl);
-  if (baseUrl) {
-    baseUrl = baseUrl.replace(/\/+$/, ""); // Remove trailing slashes
-    if (!baseUrl.endsWith("/v1")) {
-      baseUrl += "/v1";
-    }
-  }
+  // Normalize API Base URL: Remove trailing slash.
+  // Do NOT force /v1 for ezapi.myanmyanpay.com as it seems to cause 404.
+  let baseUrl = normalize(config.mmqrApiBaseUrl).replace(/\/+$/, "");
 
   console.log(`[MMQR] Initializing SDK with Base URL: ${baseUrl || "default"}`);
 
@@ -64,8 +59,11 @@ async function createMmqrPayment({ orderId, amount, callbackUrl, customMessage, 
 
   try {
     let response;
-    // Use .pay() for both sandbox and production as it's more stable.
-    response = await client.pay(payload);
+    if (config.mmqrSandboxEnabled) {
+      response = await client.sandboxPay(payload);
+    } else {
+      response = await client.pay(payload);
+    }
 
     // Some SDK versions return an error object instead of throwing
     if (response?.error || response?.statusCode >= 400) {
@@ -80,15 +78,7 @@ async function createMmqrPayment({ orderId, amount, callbackUrl, customMessage, 
     console.log(`[MMQR] API Response Body:`, JSON.stringify(response, null, 2));
     return response;
   } catch (error) {
-    // If .pay() fails and we are in sandbox, we can try .sandboxPay() as a last resort
-    if (config.mmqrSandboxEnabled && error.response?.status === 404) {
-      console.log(`[MMQR] .pay() returned 404, attempting .sandboxPay() fallback...`);
-      try {
-        return await client.sandboxPay(payload);
-      } catch (innerError) {
-        console.error(`[MMQR] Sandbox fallback also failed: ${innerError.message}`);
-      }
-    }
+    // If the method above fails, we can try a fallback if it makes sense.
     const url = error.config?.url || "unknown url";
     const method = error.config?.method || "unknown method";
     console.error(`[MMQR] API Error: ${method} ${url} -> ${error.message}`);
