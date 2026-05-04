@@ -28,10 +28,8 @@ function normalize(value) {
 
 function isMmqrSuccess(orderStatus, condition) {
   const status = normalize(orderStatus).toUpperCase();
-  if (status !== "SUCCESS") {
-    return false;
-  }
-  return true;
+  // Standard MMQR success statuses are SUCCESS or PAID
+  return status === "SUCCESS" || status === "PAID";
 }
 
 function extractProviderReference(payload) {
@@ -40,6 +38,7 @@ function extractProviderReference(payload) {
     payload.providerReference ||
     payload.referenceId ||
     payload.transactionId ||
+    payload.transactionRefID ||
     payload.trxId
   );
 }
@@ -240,7 +239,7 @@ app.post("/v1/license/mmqr/create-order", requireAuth, asyncHandler(async (req, 
     amount,
     currency: normalize(data?.currency || "MMK") || "MMK",
     status,
-    qr: normalize(data?.qr || data?.qrCode),
+    qrBase64: normalize(data?.qr || data?.qrCode),
     providerRef: extractProviderReference(data),
     condition: normalize(data?.condition),
     message: normalize(data?.message),
