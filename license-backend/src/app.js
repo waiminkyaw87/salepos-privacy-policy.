@@ -239,7 +239,7 @@ app.post("/v1/license/mmqr/create-order", requireAuth, asyncHandler(async (req, 
     amount,
     currency: normalize(data?.currency || "MMK") || "MMK",
     status,
-    qrBase64: normalize(data?.qr || data?.qrCode),
+    qr: normalize(data?.qr || data?.qrCode),
     providerRef: extractProviderReference(data),
     condition: normalize(data?.condition),
     message: normalize(data?.message),
@@ -270,7 +270,7 @@ app.get("/v1/license/mmqr/order/:orderId", requireAuth, asyncHandler(async (req,
     return res.status(403).json({ error: "This MMQR order belongs to another account." });
   }
 
-  console.log(`[MMQR] Order found: orderId=${orderId}, status=${order.status}, condition=${order.condition}`);
+  console.log(`[MMQR] Order found: orderId=${orderId}, status=${order.status}, qrPresent=${!!(order.qr || order.qrBase64)}`);
   return res.json(order);
 }));
 
